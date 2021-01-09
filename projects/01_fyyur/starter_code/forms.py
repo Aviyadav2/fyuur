@@ -4,6 +4,12 @@ from wtforms import StringField, SelectField, SelectMultipleField, DateTimeField
 from wtforms.validators import DataRequired, AnyOf, URL
 
 class ShowForm(Form):
+    """
+    Form to create and edit new Shows.
+    Corresponding HTML:
+        - templates/forms/new_show.html
+        - templates/forms/edit_show.html
+    """
     artist_id = StringField(
         'artist_id'
     )
@@ -17,6 +23,12 @@ class ShowForm(Form):
     )
 
 class VenueForm(Form):
+    """
+    Form to create and edit new Venues.
+    Corresponding HTML:
+        - templates/forms/new_venue.html
+        - templates/forms/edit_venue.html
+    """
     name = StringField(
         'name', validators=[DataRequired()]
     )
@@ -24,7 +36,8 @@ class VenueForm(Form):
         'city', validators=[DataRequired()]
     )
     state = SelectField(
-        'state', validators=[DataRequired()],
+        'state',
+        validators=[DataRequired()],
         choices=[
             ('AL', 'AL'),
             ('AK', 'AK'),
@@ -89,8 +102,8 @@ class VenueForm(Form):
         'image_link'
     )
     genres = SelectMultipleField(
-        # TODO implement enum restriction
-        'genres', validators=[DataRequired()],
+        'genres',
+        validators=[DataRequired()],
         choices=[
             ('Alternative', 'Alternative'),
             ('Blues', 'Blues'),
@@ -118,6 +131,12 @@ class VenueForm(Form):
     )
 
 class ArtistForm(Form):
+    """
+    Form to create and edit new Artists.
+    Corresponding HTML:
+        - templates/forms/new_artist.html
+        - templates/forms/edit_artist.html
+    """
     name = StringField(
         'name', validators=[DataRequired()]
     )
@@ -181,15 +200,14 @@ class ArtistForm(Form):
         ]
     )
     phone = StringField(
-        # TODO implement validation logic for state
         'phone'
     )
     image_link = StringField(
         'image_link'
     )
     genres = SelectMultipleField(
-        # TODO implement enum restriction
-        'genres', validators=[DataRequired()],
+        'genres',
+        validators=[DataRequired()],
         choices=[
             ('Alternative', 'Alternative'),
             ('Blues', 'Blues'),
@@ -213,8 +231,6 @@ class ArtistForm(Form):
         ]
     )
     facebook_link = StringField(
-        # TODO implement enum restriction
-        'facebook_link', validators=[URL()]
+        'facebook_link',
+        validators=[URL()]
     )
-
-# TODO IMPLEMENT NEW ARTIST FORM AND NEW SHOW FORM
